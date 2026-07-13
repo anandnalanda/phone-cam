@@ -1,2 +1,6 @@
-# large raw render sources kept locally, not committed until final
+# transient generation logs / job json
+build/*.json
+build/*.err
 *.log
+# raw extracted video frames (curated crops in assets/refs/ref_*.png are kept)
+assets/refs/dock_*.png
