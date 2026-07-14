@@ -1,0 +1,39 @@
+[
+  {
+    "created_at": "2026-07-14T08:31:41.946931Z",
+    "display_name": "Kling v3.0",
+    "id": "71d84ec8-9883-40cb-9d5f-d3a54e684ab8",
+    "job_type": "kling3_0",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "16:9",
+      "cfg_scale": 0.5,
+      "duration": 10,
+      "enhance_prompt": false,
+      "height": 1080,
+      "kling_element_ids": [],
+      "kling_elements": [],
+      "medias": [
+        {
+          "data": {
+            "id": "51575f0b-dfcf-4402-9e92-57d40cda5c47",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/51575f0b-dfcf-4402-9e92-57d40cda5c47.png"
+          },
+          "role": "start_image"
+        }
+      ],
+      "mode": "pro",
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "Single continuous cinematic camera move, no cuts. Cinematic night aerial: continue the same slow, steady forward glide from this exact frame, pushing gently toward the low stone boundary wall ahead. A second identical grey quadcopter aircraft glides smoothly in from the right side, and the two aircraft converge above the wall, their two bright beams of light crossing on the same spot at the base of the stone wall. As the camera pushes in, the image gradually half-resolves into infrared thermal imaging: the deep blue night gives way to a cool dark thermal palette, and at the spot where the beams cross, a clearly recognizable HUMAN FIGURE — with distinct head, shoulders, torso, arms and legs — glows bright amber-and-white against the cool darkness, standing still beside the base of the wall, locked in the center of frame, rendered exactly like a person seen through a thermal security camera. In the final second, settle back into a slow, steady forward glide drifting up and over the stone wall toward the dark horizon. Ultra-photorealistic cinematic night aerial, deep night-blue and near-black tones with restrained amber thermal accents, calm, precise, controlled. Smooth, graceful, slow motion, subtle parallax. No text, no captions, no logos.",
+      "reference_elements": [],
+      "sound": "off",
+      "width": 1920
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_083141_71d84ec8-9883-40cb-9d5f-d3a54e684ab8.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_083141_71d84ec8-9883-40cb-9d5f-d3a54e684ab8_thumbnail.webp"
+  }
+]
