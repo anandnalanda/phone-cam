@@ -1,0 +1,39 @@
+[
+  {
+    "created_at": "2026-07-14T08:26:19.038474Z",
+    "display_name": "Kling v3.0",
+    "id": "432793f2-2ddc-4d34-a7e4-ce4c7ad73f27",
+    "job_type": "kling3_0",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "16:9",
+      "cfg_scale": 0.5,
+      "duration": 10,
+      "enhance_prompt": false,
+      "height": 1080,
+      "kling_element_ids": [],
+      "kling_elements": [],
+      "medias": [
+        {
+          "data": {
+            "id": "0df234f2-f268-4239-9cad-265fbdf2f8ef",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/0df234f2-f268-4239-9cad-265fbdf2f8ef.png"
+          },
+          "role": "start_image"
+        }
+      ],
+      "mode": "pro",
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "Single continuous cinematic camera move, no cuts. Gentle cinematic night aerial: continue the same slow, steady forward glide from this exact frame, banking gently away from the villa and gliding along the edge of the dark gardens. Ahead, the small grey quadcopter aircraft flies in clear open air WELL ABOVE the treeline, its full silhouette always visible against the night sky — it never passes behind, through, or between any trees, and every tree remains completely solid and unbroken throughout. A single soft bright beam of light shines down from the aircraft, sweeping slowly across the open dark lawn below, catching a faint mist. The villa's warm window lights recede in the distance. In the final second, settle back into a slow, steady forward glide over the open lawn toward a low stone boundary wall far ahead. Ultra-photorealistic cinematic night aerial of an empty, unoccupied architectural property, deep night-blue and near-black tones, one restrained beam of light, calm, serene, elegant. Smooth, graceful, slow motion, subtle parallax. No text, no captions, no logos.",
+      "reference_elements": [],
+      "sound": "off",
+      "width": 1920
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_082619_432793f2-2ddc-4d34-a7e4-ce4c7ad73f27.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_082619_432793f2-2ddc-4d34-a7e4-ce4c7ad73f27_thumbnail.webp"
+  }
+]
