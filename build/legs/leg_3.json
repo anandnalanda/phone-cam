@@ -1,0 +1,47 @@
+[
+  {
+    "created_at": "2026-07-14T10:10:58.72004Z",
+    "display_name": "Kling v3.0",
+    "id": "fc52853a-8574-4249-8da0-37ef1b0531d5",
+    "job_type": "kling3_0",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "16:9",
+      "cfg_scale": 0.5,
+      "duration": 10,
+      "enhance_prompt": false,
+      "height": 1080,
+      "kling_element_ids": [],
+      "kling_elements": [],
+      "medias": [
+        {
+          "data": {
+            "id": "311f168b-923c-411b-90e3-22a4caedd601",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/311f168b-923c-411b-90e3-22a4caedd601.png"
+          },
+          "role": "start_image"
+        },
+        {
+          "data": {
+            "id": "1b699824-3801-40d9-a2fc-516ff53f5ec8",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/1b699824-3801-40d9-a2fc-516ff53f5ec8.png"
+          },
+          "role": "end_image"
+        }
+      ],
+      "mode": "pro",
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "Single continuous cinematic camera move, no cuts. Gentle cinematic night aerial: continue the same slow, steady forward glide from this exact frame, banking gently away from the villa and gliding along the edge of the dark gardens. Ahead, the small grey quadcopter aircraft flies in clear open air WELL ABOVE the treeline, its full silhouette always visible against the night sky — it never passes behind, through, or between any trees, and every tree remains completely solid and unbroken throughout. A single soft bright beam of light shines down from the aircraft, sweeping slowly across the open dark lawn below, catching a faint mist. The villa's warm window lights recede in the distance. In the final second, settle back into a slow, steady forward glide behind the aircraft, arriving exactly at the final frame with the aircraft ahead sweeping its beam across the dark lawn. The aircraft is the same grey quadcopter with four arms and a multi-sensor gimbal camera as in the final frame — keep its design identical throughout. Ultra-photorealistic cinematic night aerial of an empty, unoccupied architectural property, deep night-blue and near-black tones, one restrained beam of light, calm, serene, elegant. Smooth, graceful, slow motion, subtle parallax. No text, no captions, no logos.",
+      "reference_elements": [],
+      "sound": "off",
+      "width": 1920
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_101058_fc52853a-8574-4249-8da0-37ef1b0531d5.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_101058_fc52853a-8574-4249-8da0-37ef1b0531d5_thumbnail.webp"
+  }
+]
