@@ -1,0 +1,1 @@
+Error: {"actions":[{"type":"upgrade_plan"}],"billing_period":"monthly","concurrent_jobs_limit":3,"error_type":"rate_limit_reached","job_set_type":"bytedance_video_upscale","plan_type":"pro","use_unlim":false,"workspace":{"role":"owner","type":"private"}}
