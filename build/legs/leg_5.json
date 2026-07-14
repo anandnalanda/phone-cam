@@ -1,0 +1,47 @@
+[
+  {
+    "created_at": "2026-07-14T08:37:43.034398Z",
+    "display_name": "Kling v3.0",
+    "id": "bb1b0865-168b-4cac-881a-a0dc3cd5cce7",
+    "job_type": "kling3_0",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "16:9",
+      "cfg_scale": 0.5,
+      "duration": 10,
+      "enhance_prompt": false,
+      "height": 1080,
+      "kling_element_ids": [],
+      "kling_elements": [],
+      "medias": [
+        {
+          "data": {
+            "id": "194bb5a9-008c-4c9c-b97c-a1dfcf250db6",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/194bb5a9-008c-4c9c-b97c-a1dfcf250db6.png"
+          },
+          "role": "start_image"
+        },
+        {
+          "data": {
+            "id": "1a6ced41-e4ed-4214-a918-606564ad5688",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/1a6ced41-e4ed-4214-a918-606564ad5688.png"
+          },
+          "role": "end_image"
+        }
+      ],
+      "mode": "pro",
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "Single continuous cinematic camera move, no cuts. Cinematic aerial: from this exact frame, the camera rises slowly and arcs gently back toward the grand Mediterranean estate as the night softens into the first pale silver-blue light of dawn, thin mist lying low over the lawns. The grey quadcopter aircraft glides home ahead and descends gently toward its fully open white docking station waiting on the softly uplit stone pad, its two lids swung down flat to the sides like spread wings. The camera follows in a slow, steady forward glide, easing down behind the descending aircraft, the palatial villa calm in the soft dawn light, a few windows still glowing warm, arriving exactly at the final frame. Ultra-photorealistic cinematic aerial at first light of an empty, unoccupied architectural property, pale silver-blue dawn tones, soft warm window light, low mist, serene, resolved, elegant. Smooth, graceful, slow motion, subtle parallax. No text, no captions, no logos.",
+      "reference_elements": [],
+      "sound": "off",
+      "width": 1920
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_083743_bb1b0865-168b-4cac-881a-a0dc3cd5cce7.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_083743_bb1b0865-168b-4cac-881a-a0dc3cd5cce7_thumbnail.webp"
+  }
+]
