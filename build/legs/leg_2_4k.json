@@ -1,0 +1,38 @@
+[
+  {
+    "created_at": "2026-07-14T08:51:04.490758Z",
+    "display_name": "Bytedance Video Upscale",
+    "id": "57e20534-909b-4e8a-9360-72214d2d2bb9",
+    "job_type": "bytedance_video_upscale",
+    "min_result_url": null,
+    "params": {
+      "fps": 24,
+      "height": 1172,
+      "medias": [
+        {
+          "data": {
+            "id": "17c8437c-1cdb-453c-8f5c-b3ada9d27e0b",
+            "type": "video_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/17c8437c-1cdb-453c-8f5c-b3ada9d27e0b.mp4"
+          },
+          "role": "video"
+        },
+        {
+          "data": {
+            "id": "17c8437c-1cdb-453c-8f5c-b3ada9d27e0b",
+            "type": "video_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/17c8437c-1cdb-453c-8f5c-b3ada9d27e0b.mp4"
+          },
+          "role": "video"
+        }
+      ],
+      "model_version": "pro",
+      "preset": "common",
+      "resolution": "4k",
+      "width": 1764
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_085104_57e20534-909b-4e8a-9360-72214d2d2bb9.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_39Hwy3OQeewaDEj41DkTKV1yfdW/hf_20260714_085104_57e20534-909b-4e8a-9360-72214d2d2bb9_thumbnail.webp"
+  }
+]
