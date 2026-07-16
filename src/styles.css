@@ -1,0 +1,285 @@
+:root, .sw-root {
+  --sw-bg: #0A0C10;           /* obsidian — matches the night scenes */
+  --sw-ink: #EAF1F8;          /* cold white */
+  --sw-ink-soft: #8B95A3;     /* cool graphite text */
+  --sw-accent: #C9CFD6;       /* brushed platinum */
+  --sw-font-display: "Marcellus", "Times New Roman", serif;   /* lapidary roman capitals */
+  --sw-font-body: "Jost", "Futura", "Avenir Next", sans-serif; /* geometric, Futura school */
+  --lux-serif-italic: "Cormorant Garamond", Georgia, serif;    /* single couture accent */
+  --lux-platinum-hi: #F2F6FA;
+  --lux-platinum-lo: #A9B3BF;
+}
+html { background: #0A0C10; }
+body { margin: 0; background: #0A0C10; color: #EAF1F8;
+       font-family: var(--sw-font-body);
+       font-weight: 300;
+       -webkit-font-smoothing: antialiased; }
+
+/* ---------- engine typography refinements ----------
+   Marcellus ships a single 400 weight; the engine's 700s would fake-bold it. */
+/* Title scale is capped by viewport HEIGHT as well as width — the copy block is
+   fixed-positioned and vertically centered, so a title that wins itself a third
+   line on a shallow window pushes the chips off the bottom edge. */
+.sw-copy__title { font-weight: 400; letter-spacing: .015em;
+                  font-size: clamp(1.65rem, min(4.4vw, 5.6vh), 3.5rem); }
+.sw-copy__eyebrow { font-family: var(--sw-font-body); font-weight: 400;
+                    letter-spacing: .34em; font-size: .72rem; }
+.sw-copy__body { font-weight: 300; letter-spacing: .01em; }
+/* Slightly wider column so five chips need fewer rows (scrim covers 58vw). */
+@media (min-width: 861px) { .sw-copy { width: min(46vw, 500px); } }
+
+/* ---------- staged copy reveals ----------
+   ScrollWorld flips .is-live when a scene's copy peaks; children then arrive
+   in sequence — rise, deblur, and the headline's tracking settles — pulling
+   the eye from the film to the words. */
+.sw-copy > * { opacity: 0; transform: translateY(24px); filter: blur(6px);
+  transition: opacity .6s ease, filter .6s ease,
+              transform .9s cubic-bezier(.19,1,.22,1),
+              letter-spacing 1.1s cubic-bezier(.19,1,.22,1); }
+.sw-copy.is-live > * { opacity: 1; transform: none; filter: none; }
+.sw-copy:not(.is-live) .sw-copy__title { letter-spacing: .06em; }
+.sw-copy.is-live > *:nth-child(1) { transition-delay: 0s; }
+.sw-copy.is-live > *:nth-child(2) { transition-delay: .1s; }
+.sw-copy.is-live > *:nth-child(3) { transition-delay: .22s; }
+.sw-copy.is-live > *:nth-child(4) { transition-delay: .36s; }
+.sw-copy.is-live > *:nth-child(5) { transition-delay: .48s; }
+.sw-copy.is-live > *:nth-child(6) { transition-delay: .58s; }
+@media (prefers-reduced-motion: reduce) {
+  .sw-copy > * { opacity: 1; transform: none; filter: none; transition: none; }
+  .sw-copy:not(.is-live) .sw-copy__title { letter-spacing: .015em; }
+}
+.sw-copy__tags { gap: 9px; margin-top: 22px; max-width: 100%;
+                 /* hard stop at two rows: chips past that vanish whole rather
+                    than ever showing half-clipped */
+                 max-height: 78px; overflow: hidden; }
+/* glass chips: frosted panes over the night footage, tinted by each scene's accent */
+.sw-copy__tags li { font-weight: 400; letter-spacing: .06em; text-transform: uppercase;
+                    font-size: .66rem; padding: 7px 15px; white-space: nowrap;
+                    color: color-mix(in srgb, var(--sw-accent) 42%, #F2F6FA);
+                    background: linear-gradient(155deg,
+                      color-mix(in srgb, var(--sw-accent) 14%, rgba(255,255,255,.09)),
+                      color-mix(in srgb, var(--sw-accent) 6%, rgba(255,255,255,.03)));
+                    border: 1px solid color-mix(in srgb, var(--sw-accent) 30%, rgba(255,255,255,.14));
+                    backdrop-filter: blur(12px) saturate(1.3);
+                    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+                    box-shadow: inset 0 1px 0 rgba(255,255,255,.16),
+                                0 6px 18px rgba(0,0,0,.25); }
+.sw-brand__name { font-weight: 400; letter-spacing: .32em; font-size: .95rem;
+                  text-transform: uppercase; }
+/* the engine's brand block becomes the sentinel mark */
+.sw-brand__mark { width: 27px; height: 31px; border-radius: 0; box-shadow: none;
+                  background: url('/assets/brand/logo.svg') center / contain no-repeat;
+                  filter: drop-shadow(0 4px 10px rgba(0,0,0,.45)); }
+
+
+/* Keep the copy block (title + body + chips) inside the viewport on short
+   screens — it's fixed-positioned by the engine, so it can't scroll into view:
+   anything past the edge is simply lost. Scale the type before that happens. */
+@media (min-width: 861px) and (max-height: 900px) {
+  .sw-copy__title { font-size: clamp(1.65rem, min(3.6vw, 5vh), 2.6rem); }
+  .sw-copy__eyebrow { margin-top: 12px; font-size: .66rem; }
+  .sw-copy__body { margin-top: 12px; font-size: .98rem; }
+  .sw-copy__tags { margin-top: 15px; gap: 8px; max-height: 70px; }
+  .sw-copy__tags li { font-size: .62rem; padding: 6px 12px; }
+}
+@media (max-width: 860px) {
+  .sw-copy__tags { margin-top: 15px; gap: 8px; max-height: 70px; }
+  .sw-copy__tags li { font-size: .62rem; padding: 6px 12px; }
+  .sw-copy__body { margin-top: 12px; }
+}
+@media (max-width: 860px) and (max-height: 700px) {
+  .sw-copy__title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .sw-copy__tags li:nth-child(n+4) { display: none; }  /* short phones: first three chips only */
+}
+
+/* The engine seeds drifting particle dots/rings into the fixed sky layer even
+   with atmosphere off — they surface over the dark handoff once the last scene
+   fades. Not part of this design. */
+.sw-particles { display: none; }
+
+/* The engine hides the poster the instant the clip paints, but by then the
+   poster has zoom-drifted away from the clip's framing — dissolve instead of
+   snapping so the handoff reads as a focus pull, not a jump. */
+.sw-scene__still { transition: opacity .5s ease; }
+
+/* ---------- luxury buttons ----------
+   Sharp-edged platinum plaques: letterspaced small caps, hairline bevel,
+   a sheen that sweeps across on hover (engine-rendered CTAs). */
+.sw-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-block; cursor: pointer; text-decoration: none;
+  font-family: var(--sw-font-body); font-size: .78rem; font-weight: 500;
+  letter-spacing: .26em; text-indent: .26em; text-transform: uppercase;
+  padding: 17px 34px; border-radius: 2px;
+  transition: transform .4s cubic-bezier(.19,1,.22,1), box-shadow .4s ease,
+              border-color .4s ease;
+}
+.sw-btn::after {
+  content: ""; position: absolute; top: -20%; bottom: -20%; left: -45%; width: 32%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-22deg);
+  transition: left .7s cubic-bezier(.19,1,.22,1);
+  z-index: 1; pointer-events: none;
+}
+.sw-btn:hover::after { left: 125%; }
+.sw-btn--primary {
+  color: #0A0C10; border: 1px solid rgba(242,246,250,.5);
+  background: linear-gradient(165deg, var(--lux-platinum-hi) 0%, #C9CFD6 52%, var(--lux-platinum-lo) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 12px 34px rgba(0,0,0,.4);
+}
+.sw-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 18px 44px rgba(0,0,0,.5);
+}
+.sw-btn--ghost {
+  color: var(--sw-ink); border: 1px solid rgba(201,207,214,.35); background: transparent;
+}
+.sw-btn--ghost:hover {
+  transform: translateY(-2px); border-color: rgba(201,207,214,.7);
+}
+.sw-btn:focus-visible {
+  outline: 1px solid #EAF1F8; outline-offset: 3px;
+}
+
+/* ---------- route rail (right-edge scene navigation) ----------
+   Engine defaults assume a light theme (white label pill + our white ink =
+   unreadable) and never reset the UA button padding, which knocks the dots
+   off the rail line. Dark-glass labels, defined dots, exact centering, and
+   a finger-sized hit area. */
+.sw-route { padding: 16px 8px; }
+.sw-route::before { width: 1px; opacity: 1;
+  background: linear-gradient(180deg, transparent,
+    rgba(201,207,214,.4) 12%, rgba(201,207,214,.4) 88%, transparent); }
+.sw-route__dot { width: 16px; height: 16px; padding: 0; margin: 0; cursor: pointer; }
+.sw-route__dot::after { content: ""; position: absolute; inset: -10px; }  /* hit area */
+.sw-route__dot i { width: 9px; height: 9px; box-sizing: border-box;
+  background: rgba(10,12,16,.6);
+  border: 1.5px solid rgba(234,241,248,.65);
+  transition: transform .3s, background .3s, border-color .3s, box-shadow .3s; }
+.sw-route__dot:hover i { background: var(--sw-accent); border-color: transparent;
+  transform: scale(1.25); }
+.sw-route__dot.is-active i { background: var(--sw-accent); border-color: transparent;
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--sw-accent) 22%, transparent),
+              0 0 14px color-mix(in srgb, var(--sw-accent) 55%, transparent); }
+.sw-route__label { color: #EAF1F8; background: rgba(10,12,16,.6);
+  border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  font-family: var(--sw-font-body); font-weight: 400; font-size: .66rem;
+  letter-spacing: .18em; text-indent: .18em; text-transform: uppercase;
+  padding: 7px 14px; }
+
+/* ---------- topbar section nav ----------
+   Engine default is a light-theme glass pill; recast in the dark-glass
+   language — frosted obsidian rail, letterspaced items, the active section
+   as a platinum plaque like the CTAs. */
+.sw-nav { gap: 2px; padding: 5px;
+  background: rgba(10,12,16,.42);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2); }
+.sw-nav__item { font-family: var(--sw-font-body); font-size: .64rem; font-weight: 400;
+  letter-spacing: .18em; text-indent: .18em; text-transform: uppercase;
+  color: #9AA4B1; padding: 8px 15px; border-radius: 999px;
+  transition: color .3s ease, background .3s ease; }
+.sw-nav__item:hover { color: #EAF1F8; background: rgba(255,255,255,.06); }
+.sw-nav__item.is-active { color: #0A0C10;
+  background: linear-gradient(165deg, var(--lux-platinum-hi), #C9CFD6 70%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 4px 14px rgba(0,0,0,.35); }
+.sw-nav__item:focus-visible { outline: 1px solid #EAF1F8; outline-offset: 2px; }
+
+/* persistent topbar CTA (engine-rendered from config.cta) */
+.sw-topcta {
+  font-family: var(--sw-font-body); font-weight: 500; font-size: .68rem;
+  letter-spacing: .22em; text-indent: .22em; text-transform: uppercase;
+  color: var(--sw-ink); background: rgba(10,12,16,.35);
+  border: 1px solid rgba(201,207,214,.4); border-radius: 2px; padding: 11px 20px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: border-color .3s ease, background .3s ease;
+}
+.sw-topcta:hover { border-color: rgba(234,241,248,.85); background: rgba(10,12,16,.6); }
+
+/* ---------- preloader veil ---------- */
+.preloader { position: fixed; inset: 0; z-index: 300;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(70% 50% at 50% 38%, rgba(201,207,214,.05), transparent 70%),
+    #0A0C10;
+}
+.preloader__stack { display: flex; flex-direction: column; align-items: center; }
+.preloader__mark { height: 64px; filter: drop-shadow(0 10px 30px rgba(0,0,0,.5)); }
+.preloader__word { margin-top: 26px; font-family: var(--sw-font-display);
+  font-size: 15px; color: #EAF1F8; text-indent: .42em; white-space: nowrap; }
+.preloader__line { margin-top: 24px; width: 148px; height: 1px;
+  background: rgba(234,241,248,.12); overflow: hidden; }
+.preloader__line span { display: block; height: 100%; transform-origin: 0 50%;
+  background: linear-gradient(90deg, rgba(201,207,214,.5), #F2F6FA); }
+@media (prefers-reduced-motion: reduce) {
+  .preloader__mark, .preloader__word, .preloader__line span {
+    opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- briefing overlay (opened via #briefing) ----------
+   Frosted glass modal: the page stays visible, blurred and dimmed behind a
+   compact floating glass panel. */
+.briefing-screen { position: fixed; inset: 0; z-index: 200; overflow-y: auto;
+  display: grid; place-items: center; padding: clamp(16px, 5vh, 56px) 18px;
+  background: rgba(8, 10, 14, .45);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+.bs-card { position: relative; width: min(440px, 100%);
+  padding: 34px 34px 28px; border-radius: 10px;
+  background: linear-gradient(165deg, rgba(255,255,255,.09), rgba(255,255,255,.025) 55%);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(28px) saturate(1.25);
+  -webkit-backdrop-filter: blur(28px) saturate(1.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 40px 120px rgba(0,0,0,.55); }
+.bs-eyebrow { font-size: 10px; letter-spacing: .32em; text-transform: uppercase;
+  color: #8B95A3; margin-bottom: 12px; }
+.bs-title { font-family: var(--sw-font-display); font-size: 26px; font-weight: 400;
+  letter-spacing: .01em; color: #EAF1F8; margin: 0 0 6px; }
+.bs-sub { font-size: 13.5px; font-weight: 300; color: #9AA4B1; margin: 0 0 22px;
+  letter-spacing: .02em; }
+.bs-card form { display: grid; gap: 13px; }
+.bs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.bs-card label { display: block; font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: #8B95A3; font-weight: 400; margin-bottom: 6px; }
+.bs-optional { color: #5E6771; letter-spacing: .12em; text-transform: none; }
+.bs-card input, .bs-card textarea {
+  width: 100%; box-sizing: border-box; color: #EAF1F8;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.13);
+  border-radius: 5px; padding: 11px 13px; font-size: 14.5px;
+  font-family: inherit; font-weight: 300; letter-spacing: .02em; resize: none;
+  transition: border-color .3s ease, background .3s ease, box-shadow .3s ease; }
+.bs-card input:focus, .bs-card textarea:focus {
+  outline: none; border-color: rgba(234,241,248,.55);
+  background: rgba(255,255,255,.08); box-shadow: 0 0 0 1px rgba(234,241,248,.18); }
+.bs-card button[type="submit"] {
+  width: 100%; margin-top: 8px; cursor: pointer;
+  position: relative; overflow: hidden; isolation: isolate;
+  font-family: var(--sw-font-body); font-size: .74rem; font-weight: 500;
+  letter-spacing: .24em; text-indent: .24em; text-transform: uppercase;
+  padding: 15px 24px; border-radius: 5px;
+  color: #0A0C10; border: 1px solid rgba(242,246,250,.5);
+  background: linear-gradient(165deg, var(--lux-platinum-hi) 0%, #C9CFD6 52%, var(--lux-platinum-lo) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 12px 30px rgba(0,0,0,.35);
+  transition: transform .4s cubic-bezier(.19,1,.22,1), box-shadow .4s ease; }
+.bs-card button[type="submit"]:hover { transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 16px 38px rgba(0,0,0,.45); }
+.bs-card button[type="submit"]:focus-visible { outline: 1px solid #EAF1F8; outline-offset: 3px; }
+.bs-card .briefing-received { font-family: var(--sw-font-display); font-size: 18px;
+  color: #EAF1F8; letter-spacing: .02em; margin: 8px 0 4px; }
+.briefing-screen__close { position: absolute; top: 14px; right: 14px; z-index: 210;
+  cursor: pointer; background: transparent; width: 32px; height: 32px;
+  display: grid; place-items: center; font-size: 12px; line-height: 1;
+  color: #B9C2CD; border: 1px solid rgba(255,255,255,.16); border-radius: 999px;
+  transition: border-color .3s ease, color .3s ease;
+}
+.briefing-screen__close:hover { border-color: rgba(234,241,248,.8); color: #EAF1F8; }
+.briefing-screen__close:focus-visible { outline: 1px solid #EAF1F8; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .bs-card { padding: 26px 22px 22px; }
+  .bs-row { grid-template-columns: 1fr; }
+}
+

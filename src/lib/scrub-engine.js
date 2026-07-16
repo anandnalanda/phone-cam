@@ -245,7 +245,15 @@ function mountScrollWorld(container, config) {
 
   function jumpTo(i) {
     const seg = SECTIONS[i]._seg;
-    window.scrollTo({ top: seg.start + (seg.end - seg.start) * 0.5, behavior: reduce ? 'auto' : 'smooth' });
+    // Per-section landing point (0..1 through the dive). Lets a scene present
+    // its decisive moment when navigated to directly — e.g. Respond lands with
+    // the intruder already locked in the beams, not mid-approach.
+    const at = SECTIONS[i].jump != null ? SECTIONS[i].jump : 0.5;
+    const top = seg.start + (seg.end - seg.start) * at;
+    // config.scrollTo lets the site supply its own scroll animator (e.g. the
+    // Motion glide) so nav jumps match the page's wheel feel.
+    if (!reduce && config.scrollTo) config.scrollTo(top);
+    else window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
   }
 
   function enterStillsMode() {
@@ -316,9 +324,12 @@ function mountScrollWorld(container, config) {
       const pr = clamp((y - seg.start) / (seg.end - seg.start), 0, 1);
       const before = y < seg.start, after = y > seg.end;
       let cop;
+      // copySpan (per-section, 0..1): how far from mid-scene the copy stays
+      // readable — widen it so a scene's words survive to its decisive moment.
+      const span = SECTIONS[i].copySpan || 0.5;
       if (i === 0) cop = after ? 0 : smooth(1 - pr / 0.62);            // greets on landing
       else if (i === N - 1) cop = before ? 0 : smooth(pr / 0.4);       // holds CTA at the end
-      else cop = (before || after) ? 0 : smooth(1 - Math.abs(pr - 0.5) / 0.5);
+      else cop = (before || after) ? 0 : smooth(1 - Math.abs(pr - 0.5) / span);
       const c = copies[i];
       c.style.opacity = cop;
       c.style.transform = reduce ? 'none' : `translateY(${(0.5 - pr) * 4}vh)`;
@@ -340,8 +351,15 @@ function mountScrollWorld(container, config) {
     ticking = false;
   }
 
+  // Camera glide: how fast the scrub chases the scroll target each frame.
+  // Lower = heavier, smoother camera (site-config override via config.glide).
+  const GLIDE = config.glide != null ? config.glide : 0.18;
+  // Desktop seek step as a fraction of clip duration; smaller = more seeks,
+  // finer scrub granularity (config.seekStep). Phones keep the coarse step.
+  const SEEK_EPS = config.seekStep != null ? config.seekStep : 0.008;
+
   function raf() {
-    const eps = isMobile() ? 0.02 : 0.008;   // coarser seek step on phones = fewer decodes
+    const eps = isMobile() ? 0.02 : SEEK_EPS;   // coarser seek step on phones = fewer decodes
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
       if (!s.hasClip || !s.ready || !s.video) continue;
@@ -350,7 +368,13 @@ function mountScrollWorld(container, config) {
       // cur keeps lerping, so we snap to the latest target the moment it's free.
       if (s.video.seeking) continue;
       if (!s.visible && Math.abs(s.cur - s.target) < 0.002) continue;
-      s.cur += (s.target - s.cur) * (reduce ? 1 : 0.18);
+      // Near the clip edges, close the lerp gap faster: chained legs share
+      // their seam frame, so the outgoing clip must actually REACH its last
+      // frame (and the incoming hold its first) while they crossfade —
+      // a lagging camera there reads as a jump between legs.
+      let g = reduce ? 1 : GLIDE;
+      if (!reduce && (s.target > 0.94 || s.target < 0.06)) g = Math.max(g, 0.3);
+      s.cur += (s.target - s.cur) * g;
       const dur = s.video.duration || 1;
       const t = clamp(s.cur, 0, 0.999) * dur;
       if (Math.abs(s.video.currentTime - t) > eps) { try { s.video.currentTime = t; } catch (e) {} }

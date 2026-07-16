@@ -1,0 +1,25 @@
+{
+  "name": "skyknox",
+  "version": "1.0.0",
+  "description": "SkyKnox — scroll-scrubbed cinematic landing page (React + Vite)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anand-gtss/SKyKnox.git"
+  },
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "motion": "^12.42.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
+    "vite": "^8.1.4"
+  }
+}

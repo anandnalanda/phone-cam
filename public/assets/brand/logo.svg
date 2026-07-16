@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 112">
+  <!-- SkyKnox sentinel mark: a shield whose keyhole is a drone from above.
+       Keyhole bulb = drone body, rotor rings = the wards, stem = spotlight beam.
+       Single evenodd path so the cutouts are true negative space in every renderer. -->
+  <defs>
+    <linearGradient id="sk-plat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2F6FA"/>
+      <stop offset=".55" stop-color="#C9CFD6"/>
+      <stop offset="1" stop-color="#9AA5B1"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sk-plat)" fill-rule="evenodd" d="
+    M48 6 88 20 V52 C88 80 70 96 48 106 26 96 8 80 8 52 V20 Z
+    M43.5 50 A11 11 0 1 1 52.5 50 L57 82 Q48 88 39 82 Z
+    M27 17 a9 9 0 1 0 0 18 a9 9 0 1 0 0 -18 Z
+    M27 20 a6 6 0 1 0 0 12 a6 6 0 1 0 0 -12 Z
+    M69 17 a9 9 0 1 0 0 18 a9 9 0 1 0 0 -18 Z
+    M69 20 a6 6 0 1 0 0 12 a6 6 0 1 0 0 -12 Z
+    M27 49 a9 9 0 1 0 0 18 a9 9 0 1 0 0 -18 Z
+    M27 52 a6 6 0 1 0 0 12 a6 6 0 1 0 0 -12 Z
+    M69 49 a9 9 0 1 0 0 18 a9 9 0 1 0 0 -18 Z
+    M69 52 a6 6 0 1 0 0 12 a6 6 0 1 0 0 -12 Z
+    M39.93 34.34 38.47 36.26 33.67 32.56 35.13 30.64 Z
+    M56.07 34.34 57.53 36.26 62.33 32.56 60.87 30.64 Z
+    M39.93 49.66 38.47 47.74 33.67 51.44 35.13 53.36 Z
+    M56.07 49.66 57.53 47.74 62.33 51.44 60.87 53.36 Z
+  "/>
+</svg>

@@ -4,3 +4,9 @@ build/*.err
 *.log
 # raw extracted video frames (curated crops in assets/refs/ref_*.png are kept)
 assets/refs/dock_*.png
+
+# npm
+node_modules/
+.DS_Store
+dist/
+build/orig-encodes/
