@@ -12,23 +12,54 @@ export default function App() {
     () => window.location.hash === '#briefing',
   )
   const [loading, setLoading] = useState(true)
+  const [progress, setProgress] = useState(0)   // real bytes of leg 1, 0..1
 
-  // Hold the veil until the opening scene can render properly: display fonts,
-  // the Ascent still, and its clip poster. Minimum hold lets the entrance
-  // animation complete; failsafe lifts it regardless so the site can't stall.
+  // The loader does real work: it streams the first flight leg into the HTTP
+  // cache (the engine's own fetch then hits cache), reporting byte progress,
+  // so the flight is scrub-ready the moment the veil lifts. Guardrails:
+  // the 1.8s choreography hold runs CONCURRENTLY (fast connections lose
+  // nothing), an 8s ceiling lifts the veil regardless (poster fallback takes
+  // over), and data-saver / reduced-motion users are never gated on video.
   useEffect(() => {
     let done = false
     const finish = () => { if (!done) { done = true; setLoading(false) } }
     const img = src => new Promise(res => {
       const i = new Image(); i.onload = i.onerror = res; i.src = src
     })
-    Promise.all([
+
+    const phone = Math.min(screen.width, screen.height) <= 600
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const saveData = !!(navigator.connection && navigator.connection.saveData)
+    const skipVideo = reduce || saveData
+    const legUrl = i => phone ? `/assets/vid/leg_${i}-m.mp4` : `/assets/vid/leg_${i}.mp4`
+
+    const fetchLeg1 = () => fetch(legUrl(1)).then(async r => {
+      if (!r.ok || !r.body) return
+      const total = +r.headers.get('Content-Length') || 0
+      const reader = r.body.getReader()
+      let got = 0
+      for (;;) {
+        const { done: end, value } = await reader.read()
+        if (end) break
+        got += value.length
+        if (total && !done) setProgress(Math.min(1, got / total))
+      }
+      setProgress(1)
+    }).catch(() => {})
+
+    const gates = [
       document.fonts.ready,
-      img('/assets/scenes/scene_1_closed.png'),
-      img('/assets/posters/leg_1_poster.jpg'),
-      new Promise(r => setTimeout(r, 1800)),   // minimum hold
-    ]).then(finish)
-    const failsafe = setTimeout(finish, 4500)
+      img(phone ? '/assets/posters/leg_1_poster-m.jpg' : '/assets/posters/leg_1_poster.jpg'),
+      new Promise(r => setTimeout(r, 1800)),   // choreography hold, concurrent
+    ]
+    if (skipVideo) setProgress(1)
+    else gates.push(fetchLeg1().then(() => {
+      // leg 1 is down — quietly warm the next legs' cache, never gated
+      ;[2, 3].forEach(i => { fetch(legUrl(i)).catch(() => {}) })
+    }))
+
+    Promise.all(gates).then(finish)
+    const failsafe = setTimeout(finish, skipVideo ? 4500 : 8000)
     return () => clearTimeout(failsafe)
   }, [])
 
@@ -57,7 +88,7 @@ export default function App() {
         {briefingOpen && <BriefingScreen onClose={closeBriefing} />}
       </AnimatePresence>
       <AnimatePresence>
-        {loading && <Preloader />}
+        {loading && <Preloader progress={progress} />}
       </AnimatePresence>
     </>
   )
