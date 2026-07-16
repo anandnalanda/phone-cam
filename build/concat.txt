@@ -1,5 +1,0 @@
-file '/home/user/phone-cam/assets/vid/leg_1.mp4'
-file '/home/user/phone-cam/assets/vid/leg_2.mp4'
-file '/home/user/phone-cam/assets/vid/leg_3.mp4'
-file '/home/user/phone-cam/assets/vid/leg_4.mp4'
-file '/home/user/phone-cam/assets/vid/leg_5.mp4'

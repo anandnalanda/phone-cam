@@ -20,11 +20,15 @@ React + Vite. `npm install`, then `npm run dev` (serves on http://localhost:8000
 - `src/components/Dossier.jsx` / `BriefingForm.jsx` / `Footer.jsx` — post-flight sections (`motion/react` reveals)
 - `src/config/sections.js` — the five-scene engine config (clips, posters, copy, accents)
 - `src/lib/scrub-engine.js` — portable scroll-scrub engine, untouched vanilla JS (from the scroll-world skill)
-- `public/assets/vid/leg_[1-5].mp4` — the five flight legs (Kling 3.0 pro, chained frame-to-frame)
+- `public/assets/vid/leg_[1-5].mp4` — the five flight legs (Kling 3.0 pro, chained
+  frame-to-frame; motion-interpolated to 60fps, keyframe every 4 frames, for scrubbing)
 - `public/assets/posters/` — extracted first frames of each encoded leg (loading posters)
-- `public/assets/scenes/` — approved scene stills (reduced-motion fallback art) + iteration history
-- `public/assets/refs/` — DJI Dock 3 / Matrice reference images used to ground the renders
-- `build/` — prompts, raw renders, seam-check artifacts, full-flight preview MP4
+- `public/assets/scenes/` — the approved scene stills (reduced-motion fallback art)
+- `public/assets/brand/` — sentinel logo mark + favicon
+
+Production archive (4K masters, original 24fps encodes, DJI reference images,
+scene iteration history, prompts/raw renders/seam checks) lives OUTSIDE the repo
+in `~/Desktop/SkyKnox-archive/` — and in git history before this commit.
 
 ## Deployment (Higgsfield website hosting)
 
