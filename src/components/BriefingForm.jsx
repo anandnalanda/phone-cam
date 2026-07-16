@@ -38,7 +38,7 @@ export default function BriefingForm() {
         <label htmlFor="f-loc">Estate location (region / country)</label>
         <input id="f-loc" name="location" />
       </div>
-      <div>
+      <div className="bs-note">
         <label htmlFor="f-note">Note <span className="bs-optional">optional</span></label>
         <textarea id="f-note" name="note" rows={2} />
       </div>

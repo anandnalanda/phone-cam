@@ -354,12 +354,14 @@ function mountScrollWorld(container, config) {
   // Camera glide: how fast the scrub chases the scroll target each frame.
   // Lower = heavier, smoother camera (site-config override via config.glide).
   const GLIDE = config.glide != null ? config.glide : 0.18;
-  // Desktop seek step as a fraction of clip duration; smaller = more seeks,
-  // finer scrub granularity (config.seekStep). Phones keep the coarse step.
+  // Seek step as a fraction of clip duration; smaller = more seeks, finer
+  // scrub granularity (config.seekStep / config.seekStepMobile). Phones
+  // default coarser = fewer decodes; tighten when serving light mobile encodes.
   const SEEK_EPS = config.seekStep != null ? config.seekStep : 0.008;
+  const SEEK_EPS_M = config.seekStepMobile != null ? config.seekStepMobile : 0.02;
 
   function raf() {
-    const eps = isMobile() ? 0.02 : SEEK_EPS;   // coarser seek step on phones = fewer decodes
+    const eps = isMobile() ? SEEK_EPS_M : SEEK_EPS;
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
       if (!s.hasClip || !s.ready || !s.video) continue;
