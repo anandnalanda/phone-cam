@@ -21,7 +21,9 @@ React + Vite. `npm install`, then `npm run dev` (serves on http://localhost:8000
 - `src/config/sections.js` — the five-scene engine config (clips, posters, copy, accents)
 - `src/lib/scrub-engine.js` — portable scroll-scrub engine, untouched vanilla JS (from the scroll-world skill)
 - `public/assets/vid/leg_[1-5].mp4` — the five flight legs (Kling 3.0 pro, chained
-  frame-to-frame; motion-interpolated to 60fps, keyframe every 4 frames, for scrubbing)
+  frame-to-frame). Encoded 1440p/24fps, keyframe every 4 frames, from the 4K masters,
+  kept small (~12MB) so each scene scrubs soon after scroll on real bandwidth.
+  `leg_[1-5]-m.mp4` are the 720p mobile tier.
 - `public/assets/posters/` — extracted first frames of each encoded leg (loading posters)
 - `public/assets/scenes/` — the approved scene stills (reduced-motion fallback art)
 - `public/assets/brand/` — sentinel logo mark + favicon

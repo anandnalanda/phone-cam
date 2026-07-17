@@ -9,8 +9,8 @@ export const scrollWorldConfig = {
   diveScroll: 1.35,
   crossfade: 0.28,   // wide seam dissolve — legs melt into each other
   glide: 0.075,      // heavy cinematic camera: scrub drifts after the scroll
-  seekStep: 0.0016,       // one 60fps frame of the 10s legs — frame-accurate scrubbing
-  seekStepMobile: 0.008,  // ~5 frames on phones — the 720p tier decodes fast enough
+  seekStep: 0.0042,       // one 24fps frame of the 10s legs — frame-accurate scrubbing
+  seekStepMobile: 0.008,  // ~2 frames on phones — the 720p tier decodes fast enough
   sections: [
     {
       id: 'ascent', label: 'Ascent',
